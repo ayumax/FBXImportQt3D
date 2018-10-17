@@ -27,3 +27,15 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/lib/vs2015/x64/release/' -llibfbxsdk-md
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/lib/vs2015/x64/debug/' -llibfbxsdk-md
+
+INCLUDEPATH += $$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/include'
+DEPENDPATH += $$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/include'
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/lib/vs2015/x64/release/liblibfbxsdk-md.a'
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/lib/vs2015/x64/debug/liblibfbxsdk-md.a'
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/lib/vs2015/x64/release/libfbxsdk-md.lib'
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/lib/vs2015/x64/debug/libfbxsdk-md.lib'
