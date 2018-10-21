@@ -1,4 +1,4 @@
-QT += quick
+QT += 3dcore 3drender 3dinput 3dquick 3dlogic qml quick 3dquickextras
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -13,7 +13,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+    fbxloader.cpp
 
 RESOURCES += qml.qrc
 
@@ -39,3 +40,6 @@ win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/'../../../../.
 else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/lib/vs2015/x64/debug/liblibfbxsdk-md.a'
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/lib/vs2015/x64/release/libfbxsdk-md.lib'
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/'../../../../../../Program Files/Autodesk/FBX/FBX SDK/2019.0/lib/vs2015/x64/debug/libfbxsdk-md.lib'
+
+HEADERS += \
+    fbxloader.h
